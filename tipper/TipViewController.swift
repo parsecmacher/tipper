@@ -24,8 +24,11 @@ class ViewController: UIViewController {
         let tip = bill * Tip.tipPercentages[tipPercentagesControl.selectedSegmentIndex]
         let total = bill + tip
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        let fmt = NumberFormatter()
+        fmt.numberStyle = .currency
+        
+        tipLabel.text = fmt.string(for: tip)
+        totalLabel.text = fmt.string(for: total)
     }
     
     func initSegmentedControlWithDefaultIndex() {
